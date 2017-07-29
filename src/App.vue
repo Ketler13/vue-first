@@ -5,6 +5,7 @@
       <router-link to="/splits">splits</router-link>
       <router-link to="/excercises">excercises</router-link>
       <router-link to="/login">log in</router-link>
+      <router-link to="/signup">sign up</router-link>
     </nav>
     <router-view></router-view>
   </div>

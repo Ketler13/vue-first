@@ -1,8 +1,9 @@
 <template>
-  <form class="login-form" v-on:submit.prevent="login">
+  <form class="login-form" v-on:submit.prevent="signup">
+    <input type="text" v-model="name" placeholder="name" class="form-input"/>
     <input type="email" v-model="email" placeholder="email" class="form-input"/>
     <input type="password" v-model="password" placeholder="password" class="form-input"/>
-    <button type="submit" v-bind:disabled="!formFullfilled" class="form-button">Log in</button>
+    <button type="submit" v-bind:disabled="!formFullfilled" class="form-button">Sign up</button>
   </form>
 </template>
 
@@ -11,20 +12,21 @@
     name: 'login',
     data () {
       return {
+        name: '',
         email: '',
         password: ''
       }
     },
     computed: {
       formFullfilled () {
-        return this.email && this.password
+        return this.email && this.password && this.name
       }
     },
     methods: {
-      login () {
+      signup () {
         this.$store
-          .dispatch('login', {email: this.email, password: this.password})
-          .then(() => { this.$router.push({ path: '/newsplit' }) })
+          .dispatch('signup', {name: this.name, email: this.email, password: this.password})
+          .then(() => { this.$router.push({ path: '/login' }) })
           .catch(console.error)
       }
     }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { login } from '@/actions'
+import { login, signup } from '@/actions'
 
 Vue.use(Vuex)
 
@@ -12,13 +12,21 @@ const store = new Vuex.Store({
     token: null
   },
   mutations: {
-    setToken (state, payload) {
-      console.log(payload)
+    setToken (state, result) {
+      if (result.data.success) {
+        state.token = result.data.token
+      }
+    },
+    signup (state, result) {
+      console.log(result)
     }
   },
   actions: {
-    async login ({commit}, email, password) {
-      commit('setToken', await login(email, password))
+    async login ({commit}, payload) {
+      commit('setToken', await login(payload))
+    },
+    async signup ({commit}, payload) {
+      commit('signup', await signup(payload))
     }
   }
 })
