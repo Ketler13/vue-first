@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <nav class="main-nav">
-      <router-link to="/newsplit">new split</router-link>
-      <router-link to="/splits">splits</router-link>
-      <router-link to="/excercises">excercises</router-link>
-      <router-link to="/login">log in</router-link>
-      <router-link to="/signup">sign up</router-link>
+      <router-link to="/newsplit" v-if="isLogged">new split</router-link>
+      <router-link to="/splits" v-if="isLogged">splits</router-link>
+      <router-link to="/excercises" v-if="isLogged">excercises</router-link>
+      <router-link to="/login" v-if="!isLogged">log in</router-link>
+      <router-link to="/signup" v-if="!isLogged">sign up</router-link>
+      <a href="#" v-if="isLogged" @click.prevent="logout">log out</a>
     </nav>
     <router-view></router-view>
   </div>
@@ -13,11 +14,25 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    logout () {
+      this.$store.commit('logout')
+    }
+  },
+  computed: {
+    isLogged () {
+      return this.$store.state.isLogged
+    }
+  }
 }
 </script>
 
 <style>
+  ul {
+    list-style-type: none;
+  }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

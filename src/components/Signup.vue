@@ -25,7 +25,7 @@
     methods: {
       signup () {
         this.$store
-          .dispatch('signup', {name: this.name, email: this.email, password: this.password})
+          .dispatch('signUp', {name: this.name, email: this.email, password: this.password})
           .then(() => { this.$router.push({ path: '/login' }) })
           .catch(console.error)
       }

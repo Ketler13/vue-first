@@ -27,3 +27,16 @@ export const signup = payload => {
     }
   })
 }
+
+export const loadexc = (token) => {
+  const url = BASE_URL + 'excercises'
+
+  return axios({
+    method: 'get',
+    url,
+    headers: {
+      'content-type': 'application/json',
+      token
+    }
+  })
+}

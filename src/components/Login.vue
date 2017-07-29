@@ -23,7 +23,7 @@
     methods: {
       login () {
         this.$store
-          .dispatch('login', {email: this.email, password: this.password})
+          .dispatch('logIn', {email: this.email, password: this.password})
           .then(() => { this.$router.push({ path: '/newsplit' }) })
           .catch(console.error)
       }
