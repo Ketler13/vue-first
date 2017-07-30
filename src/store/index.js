@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { login, signup, loadexc } from '@/actions'
+import { login, signup, loadexc, add } from '@/actions'
 
 Vue.use(Vuex)
 
@@ -9,6 +9,7 @@ const store = new Vuex.Store({
   state: {
     email: '',
     password: '',
+    user: null,
     token: null,
     isLogged: false,
     excercises: null,
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
       if (result.data.success) {
         state.token = result.data.token
         state.isLogged = true
+        state.user = result.data.user
       }
     },
     signUp (state, result) {
@@ -29,9 +31,13 @@ const store = new Vuex.Store({
       state.excercises = result.data.excercises
     },
     logout (state) {
+      state.email = ''
+      state.password = ''
       state.token = null
       state.isLogged = false
       state.excercises = null
+      state.details = []
+      state.excercisesInSplit = []
     },
     addExcerciseToSplit (state, title) {
       state.details.push(title)
@@ -62,6 +68,10 @@ const store = new Vuex.Store({
       state.excercisesInSplit = state.excercisesInSplit.filter(
         e => e.name !== title
       )
+    },
+    refreshStore (state) {
+      state.details = []
+      state.excercisesInSplit = []
     }
   },
   actions: {
@@ -73,6 +83,17 @@ const store = new Vuex.Store({
     },
     async loadExcercises ({commit, state}) {
       commit('setExcercises', await loadexc(state.token))
+    },
+    async addSplit ({state}) {
+      const now = new Date()
+      const date = now.toLocaleDateString()
+      const split = {
+        excercises: state.excercisesInSplit,
+        mark: '0',
+        date,
+        user: state.user.id
+      }
+      return await add(split, state.token)
     }
   }
 })

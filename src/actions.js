@@ -40,3 +40,17 @@ export const loadexc = (token) => {
     }
   })
 }
+
+export const add = (split, token) => {
+  const url = BASE_URL + 'addSplit'
+
+  return axios({
+    method: 'post',
+    url,
+    data: JSON.stringify(split),
+    headers: {
+      'content-type': 'application/json',
+      token
+    }
+  })
+}

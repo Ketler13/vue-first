@@ -10,6 +10,7 @@
       </new-split-excercise>
     </ul>
     <chips></chips>
+    <button type="button" v-show="submitButtonIsVisible" @click="addSplit">ADD SPLIT</button>
     <new-split-details :details="details">
     </new-split-details>
   </div>
@@ -34,6 +35,17 @@
         } else {
           this.$store.commit('removeExcerciseFromSplit', title)
         }
+      },
+      addSplit () {
+        this.$store
+          .dispatch('addSplit')
+          .then(result => {
+            if (result.data.success) {
+              this.$store.commit('refreshStore')
+              setTimeout(() => this.$router.push({path: '/splits'}), 500)
+            }
+          })
+          .catch(console.error)
       }
     },
     computed: {
@@ -42,6 +54,9 @@
       },
       details () {
         return this.$store.state.details
+      },
+      submitButtonIsVisible () {
+        return this.$store.state.excercisesInSplit.length
       }
     },
     mounted () {
