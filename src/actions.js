@@ -54,3 +54,19 @@ export const add = (split, token) => {
     }
   })
 }
+
+export const _loadSplits = (token, user) => {
+  const url = BASE_URL + 'splits'
+
+  return axios({
+    method: 'post',
+    url,
+    data: {
+      user
+    },
+    headers: {
+      'content-type': 'application/json',
+      token
+    }
+  })
+}

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { login, signup, loadexc, add } from '@/actions'
+import { login, signup, loadexc, add, _loadSplits } from '@/actions'
 
 Vue.use(Vuex)
 
@@ -14,7 +14,8 @@ const store = new Vuex.Store({
     isLogged: false,
     excercises: null,
     details: [],
-    excercisesInSplit: []
+    excercisesInSplit: [],
+    splits: []
   },
   mutations: {
     setToken (state, result) {
@@ -30,6 +31,9 @@ const store = new Vuex.Store({
     setExcercises (state, result) {
       state.excercises = result.data.excercises
     },
+    setSplits (state, result) {
+      state.splits = result.data
+    },
     logout (state) {
       state.email = ''
       state.password = ''
@@ -38,6 +42,7 @@ const store = new Vuex.Store({
       state.excercises = null
       state.details = []
       state.excercisesInSplit = []
+      state.splits = []
     },
     addExcerciseToSplit (state, title) {
       state.details.push(title)
@@ -94,6 +99,9 @@ const store = new Vuex.Store({
         user: state.user.id
       }
       return await add(split, state.token)
+    },
+    async loadSplits ({commit, state}) {
+      commit('setSplits', await _loadSplits(state.token, state.user.id))
     }
   }
 })

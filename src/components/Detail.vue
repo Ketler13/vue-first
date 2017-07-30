@@ -3,14 +3,10 @@
     <p>
       {{title}}
     </p>
-    <label>
-      weight, kg:
-      <input type="number" v-model="weight"/>
-    </label>
-    <label>
-      times:
-      <input type="number" v-model="times"/>
-    </label>
+    <input type="range" v-model="weight" min="0" max="200" step="1"/>
+    <p>{{weight}} kg</p>
+    <input type="range" v-model="times" min="0" max="50" step="1"/>
+    <p>{{times}} times</p>
     <button @click.prevent="addSetToSplit">add set</button>
   </form>
 </template>
