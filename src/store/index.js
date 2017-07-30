@@ -11,7 +11,8 @@ const store = new Vuex.Store({
     password: '',
     token: null,
     isLogged: false,
-    excercises: null
+    excercises: null,
+    details: []
   },
   mutations: {
     setToken (state, result) {
@@ -30,6 +31,12 @@ const store = new Vuex.Store({
       state.token = null
       state.isLogged = false
       state.excercises = null
+    },
+    addExcerciseToSplit (state, title) {
+      state.details.push(title)
+    },
+    removeExcerciseFromSplit (state, title) {
+      state.details = state.details.filter(detail => detail !== title)
     }
   },
   actions: {
