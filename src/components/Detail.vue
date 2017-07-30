@@ -11,7 +11,7 @@
       times:
       <input type="number" v-model="times"/>
     </label>
-    <button @click="addSetToSplit">add set</button>
+    <button @click.prevent="addSetToSplit">add set</button>
   </form>
 </template>
 
@@ -27,7 +27,12 @@
     },
     methods: {
       addSetToSplit () {
-        console.log(this.weight, this.times)
+        let { title, weight, times } = this
+        if (weight && times) {
+          this.$store.commit('addSetToSplit', {title, weight, times})
+          this.weight = 0
+          this.times = 0
+        }
       }
     }
   }

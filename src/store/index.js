@@ -12,7 +12,8 @@ const store = new Vuex.Store({
     token: null,
     isLogged: false,
     excercises: null,
-    details: []
+    details: [],
+    excercisesInSplit: []
   },
   mutations: {
     setToken (state, result) {
@@ -37,6 +38,25 @@ const store = new Vuex.Store({
     },
     removeExcerciseFromSplit (state, title) {
       state.details = state.details.filter(detail => detail !== title)
+    },
+    addSetToSplit (state, {title, weight, times}) {
+      const isExcerciseInsplit = state.excercisesInSplit.length && state.excercisesInSplit.find(
+        excercise => excercise.name === title
+      )
+
+      const value = weight + 'x' + times
+
+      if (!isExcerciseInsplit) {
+        state.excercisesInSplit
+          .push({name: title, sets: [value]})
+      } else {
+        state.excercisesInSplit = state.excercisesInSplit
+          .map(e => (
+            e.name === title
+            ? {...e, sets: e.sets.concat(value)}
+            : e
+          ))
+      }
     }
   },
   actions: {
