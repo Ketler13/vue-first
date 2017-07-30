@@ -57,6 +57,11 @@ const store = new Vuex.Store({
             : e
           ))
       }
+    },
+    removeExcerciseByChips (state, title) {
+      state.excercisesInSplit = state.excercisesInSplit.filter(
+        e => e.name !== title
+      )
     }
   },
   actions: {

@@ -9,6 +9,7 @@
       >
       </new-split-excercise>
     </ul>
+    <chips></chips>
     <new-split-details :details="details">
     </new-split-details>
   </div>
@@ -17,12 +18,14 @@
 <script>
   import NewSplitExcercise from './NewSplitExcercise'
   import NewSplitDetails from './NewSplitDetails'
+  import Chips from './Chips'
 
   export default {
     name: 'newsplit',
     components: {
       'new-split-excercise': NewSplitExcercise,
-      'new-split-details': NewSplitDetails
+      'new-split-details': NewSplitDetails,
+      'chips': Chips
     },
     methods: {
       handleExcercise ({checked, title}) {
