@@ -5,6 +5,7 @@
         <ul class="excercise-handler">
           <new-split-excercise
             v-for="excercise in excercises"
+            :details="details"
             :excercise="excercise"
             :key="excercise.id"
             @click="handleExcercise($event)"
@@ -36,7 +37,7 @@
     >
       Create split
     </md-button>
-    <new-split-details :details="details">
+    <new-split-details :details="details" @remove="handleExcercise($event)">
     </new-split-details>
   </div>
 </template>
