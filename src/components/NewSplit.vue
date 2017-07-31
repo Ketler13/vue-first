@@ -1,14 +1,30 @@
 <template>
   <div>
-    <ul class="excercise-handler">
-      <new-split-excercise
-        v-for="excercise in excercises"
-        :excercise="excercise"
-        :key="excercise.id"
-        @click="handleExcercise($event)"
-      >
-      </new-split-excercise>
-    </ul>
+    <md-dialog md-open-from="#select" md-close-to="#select" ref="excercises">
+      <md-dialog-title>Select excercises</md-dialog-title>
+
+      <md-dialog-content>
+        <ul class="excercise-handler">
+          <new-split-excercise
+            v-for="excercise in excercises"
+            :excercise="excercise"
+            :key="excercise.id"
+            @click="handleExcercise($event)"
+          >
+          </new-split-excercise>
+        </ul>
+      </md-dialog-content>
+
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="closeDialog('excercises')">Cancel</md-button>
+        <md-button class="md-primary" @click="closeDialog('excercises')">Ok</md-button>
+      </md-dialog-actions>
+    </md-dialog>
+
+    <md-button class="md-primary md-raised" id="select" @click="openDialog('excercises')">
+      Select excercises
+    </md-button>
+
     <chips></chips>
     <button type="button" v-show="submitButtonIsVisible" @click="addSplit">ADD SPLIT</button>
     <new-split-details :details="details">
@@ -46,6 +62,12 @@
             }
           })
           .catch(console.error)
+      },
+      openDialog (ref) {
+        this.$refs[ref].open()
+      },
+      closeDialog (ref) {
+        this.$refs[ref].close()
       }
     },
     computed: {
@@ -68,7 +90,10 @@
 
 <style scoped>
   .excercise-handler {
+    width: 80%;
+    margin: 0 auto;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
+    align-items: stretch;
   }
 </style>

@@ -1,9 +1,6 @@
 <template>
   <li>
-    <label>
-      <input type="checkbox" value="22" @click="emitClick($event.target.checked)"/>
-      {{excercise.title}}
-    </label>
+    <md-checkbox :value="checked" @change="emitClick($event)">{{excercise.title}}</md-checkbox>
   </li>
 </template>
 
@@ -11,8 +8,14 @@
   export default {
     name: 'new-split-excercise',
     props: ['excercise'],
+    data () {
+      return {
+        checked: false
+      }
+    },
     methods: {
       emitClick (checked) {
+        this.checked = !this.checked
         const title = this.excercise.title
         this.$emit('click', {checked, title})
       }
