@@ -1,7 +1,9 @@
 <template>
   <div class="details">
-    <detail class="detail" v-for="title in details" :title="title" :key="title">
-    </detail>
+    <md-whiteframe :key="title" md-elevation="10" class="detail" v-for="title in details">
+      <detail :title="title">
+      </detail>
+  </md-whiteframe>
   </div>
 </template>
 
@@ -24,11 +26,11 @@
   }
 
   .detail {
+    width: 20%;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    margin: 0 10px;
-    box-shadow: 4px 4px 23px -4px rgba(0,0,0,0.75);
+    margin: 10px 10px;
     padding: 5px;
   }
 </style>

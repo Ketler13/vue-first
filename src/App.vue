@@ -59,4 +59,8 @@ export default {
     padding: 0;
     list-style-type: none;
   }
+
+  .fullwidth {
+    width: 100%;
+  }
 </style>

@@ -1,8 +1,6 @@
 <template>
   <div>
     <md-dialog md-open-from="#select" md-close-to="#select" ref="excercises">
-      <md-dialog-title>Select excercises</md-dialog-title>
-
       <md-dialog-content>
         <ul class="excercise-handler">
           <new-split-excercise
@@ -16,17 +14,28 @@
       </md-dialog-content>
 
       <md-dialog-actions>
-        <md-button class="md-primary" @click="closeDialog('excercises')">Cancel</md-button>
-        <md-button class="md-primary" @click="closeDialog('excercises')">Ok</md-button>
+        <md-button class="md-primary" @click="closeDialog('excercises')">
+          Ok
+        </md-button>
       </md-dialog-actions>
     </md-dialog>
 
-    <md-button class="md-primary md-raised" id="select" @click="openDialog('excercises')">
+    <md-button
+      class="md-primary"
+      id="select"
+      @click="openDialog('excercises')"
+    >
       Select excercises
     </md-button>
 
     <chips></chips>
-    <button type="button" v-show="submitButtonIsVisible" @click="addSplit">ADD SPLIT</button>
+    <md-button
+      class="md-raised md-accent fullwidth"
+      v-show="submitButtonIsVisible"
+      @click="addSplit"
+    >
+      Create split
+    </md-button>
     <new-split-details :details="details">
     </new-split-details>
   </div>

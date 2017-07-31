@@ -7,7 +7,9 @@
     <p>{{weight}} kg</p>
     <input type="range" v-model="times" min="0" max="50" step="1"/>
     <p>{{times}} times</p>
-    <button @click.prevent="addSetToSplit">add set</button>
+    <md-button @click.prevent="addSetToSplit" class="md-icon-button md-primary">
+      <md-icon>add</md-icon>
+    </md-button>
   </form>
 </template>
 

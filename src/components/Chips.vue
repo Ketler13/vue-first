@@ -1,10 +1,17 @@
 <template>
   <p class="chips">
-    <span class="chip" v-for="excercise in excercises">
+    <md-chip
+      v-for="excercise in excercises"
+      :key="excercise.name"
+      @delete="remove(excercise.name)"
+      md-deletable
+      class="chip"
+    >
       {{excercise.name}}
-      <span v-for="set in excercise.sets" class="set">{{set}}</span>
-      <span class="delete" @click="remove(excercise.name)">X</span>
-    </span>
+      <span v-for="(set, index) in excercise.sets" :key="index" class="set" >
+        {{set}}
+      </span>
+    </md-chip>
   </p>
 </template>
 
@@ -25,17 +32,13 @@
 </script>
 
 <style scoped>
-  .chip {
-    display: inline-block;
-    margin: 0 5px;
-    padding: 3px;
-    border: 1px solid gray;
-    border-radius: 5px;
+  .chips {
+    display: flex;
+    align-items: flex-start;
   }
 
-  .delete {
-    color: red;
-    cursor: pointer;
+  .chip {
+    margin: 0 5px;
   }
 
   .set {
