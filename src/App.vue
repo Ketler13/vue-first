@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <nav class="main-nav">
-      <router-link to="/newsplit" v-if="isLogged">new split</router-link>
-      <router-link to="/splits" v-if="isLogged">splits</router-link>
-      <router-link to="/excercises" v-if="isLogged">excercises</router-link>
-      <router-link to="/login" v-if="!isLogged">log in</router-link>
-      <router-link to="/signup" v-if="!isLogged">sign up</router-link>
-      <a href="#" v-if="isLogged" @click.prevent="logout">log out</a>
-    </nav>
+    <md-toolbar class="main-nav">
+      <router-link tag="md-button" to="/newsplit" v-if="isLogged">new split</router-link>
+      <router-link tag="md-button" to="/splits" v-if="isLogged">splits</router-link>
+      <router-link tag="md-button" to="/excercises" v-if="isLogged">excercises</router-link>
+      <span v-if="isLogged" style="flex: 1"></span>
+      <router-link tag="md-button" to="/login" v-if="!isLogged">log in</router-link>
+      <router-link tag="md-button" to="/signup" class="md-accent" v-if="!isLogged">sign up</router-link>
+      <md-button v-if="isLogged" @click.prevent="logout" class="md-warn">log out</md-button>
+    </md-toolbar>
     <router-view></router-view>
   </div>
 </template>
@@ -43,11 +44,9 @@ export default {
   }
 
   .main-nav {
-    width: 30%;
-    margin: 0px auto;
     display: flex;
     flex-flow: row;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
 

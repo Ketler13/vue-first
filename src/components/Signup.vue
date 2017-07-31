@@ -1,10 +1,21 @@
 <template>
-  <form class="login-form" v-on:submit.prevent="signup">
-    <input type="text" v-model="name" placeholder="name" class="form-input"/>
-    <input type="email" v-model="email" placeholder="email" class="form-input"/>
-    <input type="password" v-model="password" placeholder="password" class="form-input"/>
-    <button type="submit" v-bind:disabled="!formFullfilled" class="form-button">Sign up</button>
-  </form>
+  <div class="signup-form__wrapper">
+    <form novalidate @submit.stop.prevent="signup" class="signup-form">
+      <md-input-container>
+        <label>user name</label>
+        <md-input v-model="name" type="text"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>email</label>
+        <md-input v-model="email" type="email"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>password</label>
+        <md-input v-model="password" type="password"></md-input>
+      </md-input-container>
+      <md-button type="submit" class="md-raised md-primary" :disabled="!formFullfilled">Sign up</md-button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -34,25 +45,13 @@
 </script>
 
 <style scoped>
-  .login-form {
-    margin-top: 100px;
-  }
+.signup-form__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .form-input {
-    border: 1px solid #42b983;
-    border-radius: 10px;
-    padding-left: 5px;
-  }
-
-  .form-button {
-    width: 70px;
-    border: none;
-    border-radius: 10px;
-    background-color: #42b983;
-    color: white;
-  }
-
-  .form-button:disabled {
-    background-color: gray;
-  }
+.signup-form {
+  width: 40%;
+}
 </style>

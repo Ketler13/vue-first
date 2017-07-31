@@ -1,9 +1,17 @@
 <template>
-  <form class="login-form" v-on:submit.prevent="login">
-    <input type="email" v-model="email" placeholder="email" class="form-input"/>
-    <input type="password" v-model="password" placeholder="password" class="form-input"/>
-    <button type="submit" v-bind:disabled="!formFullfilled" class="form-button">Log in</button>
-  </form>
+  <div class="login-form__wrapper">
+    <form novalidate @submit.stop.prevent="login" class="login-form">
+      <md-input-container>
+        <label>email</label>
+        <md-input v-model="email" type="email"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>password</label>
+        <md-input v-model="password" type="password"></md-input>
+      </md-input-container>
+      <md-button type="submit" class="md-raised md-primary" :disabled="!formFullfilled">Log in</md-button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -17,7 +25,7 @@
     },
     computed: {
       formFullfilled () {
-        return this.email && this.password
+        return !!this.email && !!this.password
       }
     },
     methods: {
@@ -32,25 +40,13 @@
 </script>
 
 <style scoped>
+  .login-form__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .login-form {
-    margin-top: 100px;
-  }
-
-  .form-input {
-    border: 1px solid #42b983;
-    border-radius: 10px;
-    padding-left: 5px;
-  }
-
-  .form-button {
-    width: 70px;
-    border: none;
-    border-radius: 10px;
-    background-color: #42b983;
-    color: white;
-  }
-
-  .form-button:disabled {
-    background-color: gray;
+    width: 40%;
   }
 </style>
