@@ -22,8 +22,10 @@
         <label>password</label>
         <md-input v-model="password" type="password"></md-input>
       </md-input-container>
-      
-      <md-button type="submit" class="md-raised md-primary" :disabled="!formFullfilled">Sign up</md-button>
+
+      <md-button type="submit" class="md-raised md-primary" :disabled="!formFullfilled">
+        Sign up
+      </md-button>
     </form>
   </div>
 </template>

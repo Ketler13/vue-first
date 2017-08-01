@@ -8,20 +8,25 @@ export default {
       email: '',
       password: '',
       emailError: '',
-      nameError: ''
+      nameError: '',
+      registering: false
     }
   },
   computed: {
     formFullfilled () {
       return this.email && this.password && this.name && !this.emailError &&
-      !this.nameError
+      !this.nameError && !this.registering
     }
   },
   methods: {
     signup () {
+      this.registering = true
       this.$store
         .dispatch('signUp', {name: this.name, email: this.email, password: this.password})
-        .then(() => { this.$router.push({ path: '/login' }) })
+        .then(() => {
+          this.registering = false
+          this.$router.push({ path: '/login' })
+        })
         .catch(console.error)
     },
     async checkName (name) {
