@@ -65,6 +65,7 @@ export default {
   }
 
   .new-split, .splits, .excercises {
-    margin-top: 20px;
+    width: 80%;
+    margin: 20px auto;
   }
 </style>

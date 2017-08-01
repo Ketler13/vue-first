@@ -70,3 +70,17 @@ export const _loadSplits = (token, user) => {
     }
   })
 }
+
+export const _addExcercise = (token, data) => {
+  const url = BASE_URL + 'addexcercise'
+
+  return axios({
+    method: 'post',
+    url,
+    data,
+    headers: {
+      'content-type': 'application/json',
+      token
+    }
+  })
+}
