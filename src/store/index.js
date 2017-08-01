@@ -81,6 +81,14 @@ const store = new Vuex.Store({
     removeSplit (state, id) {
       state.splits = state.splits
         .filter(split => split.id !== id)
+    },
+    setRateToSplit (state, {id, rate}) {
+      state.splits = state.splits
+        .map(split => (
+          split.id === id
+          ? {...split, mark: rate}
+          : split
+        ))
     }
   },
   actions: {

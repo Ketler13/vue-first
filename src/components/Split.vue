@@ -32,12 +32,16 @@
         rate: +this.split.mark
       }
     },
+    updated () {
+      this.rate = +this.split.mark
+    },
     methods: {
       async setRate (rate) {
         try {
           const res = await _setRate(rate, this.split.id, this.$store.state.token)
           if (res.data.success) {
-            this.rate = rate
+            this.$store.commit('setRateToSplit', {rate, id: this.split.id})
+            // this.rate = rate
           }
         } catch (e) {
           console.error(e)
