@@ -24,7 +24,11 @@
       }
     },
     mounted () {
-      this.$store.dispatch('loadSplits')
+      if (!this.$store.state.isLogged) {
+        this.$router.push({path: '/login'})
+      } else {
+        this.$store.dispatch('loadSplits')
+      }
     }
   }
 </script>
@@ -37,8 +41,5 @@
 
   .split {
     margin: 0 10px;
-    padding: 5px;
-    text-align: left;
-    box-shadow: 4px 4px 23px -4px rgba(0,0,0,0.75);
   }
 </style>

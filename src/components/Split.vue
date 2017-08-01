@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <md-whiteframe md-elevation="10" class="split">
     <p>
       {{split.date}}
     </p>
@@ -11,7 +11,7 @@
     </ul>
     <md-rating-bar :value="rate" :md-max-rating="5" class="md-primary"
       :md-empty-icon="'star_border'" @change="setRate($event)"></md-rating-bar>
-  </div>
+  </md-whiteframe>
 </template>
 
 
@@ -50,6 +50,9 @@
 </script>
 
 <style scoped>
+  .split {
+    padding: 5px;
+  }
   .set {
     margin: 0 5px;
   }

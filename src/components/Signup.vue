@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import { _checkName, _checkEmail, pattern } from '@/helpers'
 
   export default {
     name: 'login',
@@ -55,7 +55,7 @@
           .then(() => { this.$router.push({ path: '/login' }) })
           .catch(console.error)
       },
-      checkName (name) {
+      async checkName (name) {
         if (!name) {
           this.nameValidError = ''
           this.nameUniqueError = ''
@@ -64,57 +64,45 @@
         const pattern = /[a-zA-Z0-9]/
         if (!pattern.test(name)) {
           this.nameValidError = 'username must contain letters and numbers only'
+          this.nameUniqueError = ''
           return
         } else {
           this.nameValidError = ''
         }
-        axios({
-          method: 'post',
-          url: 'http://127.0.0.1:3000/api/checkName',
-          data: JSON.stringify({name}),
-          headers: {
-            'content-type': 'application/json'
-          }
-        })
-        .then(res => {
+        try {
+          const res = await _checkName(name)
           res.data.success
           ? this.nameUniqueError = ''
           : this.nameUniqueError = 'name already exists'
-        })
-        .catch(console.error)
+        } catch (e) {
+          console.error(e)
+        }
       },
       clearNameErrors () {
         this.nameValidError = ''
         this.nameUniqueError = ''
       },
-      checkEmail (email) {
+      async checkEmail (email) {
         if (!email) {
           this.emailValidError = ''
           this.emailUniqueError = ''
           return
         }
-        /* eslint-disable no-useless-escape */
-        const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         if (!pattern.test(email)) {
           this.emailValidError = 'incorrect email'
+          this.emailUniqueError = ''
           return
         } else {
           this.emailValidError = ''
         }
-        axios({
-          method: 'post',
-          url: 'http://127.0.0.1:3000/api/checkEMail',
-          data: JSON.stringify({email}),
-          headers: {
-            'content-type': 'application/json'
-          }
-        })
-        .then(res => {
+        try {
+          const res = await _checkEmail(email)
           res.data.success
           ? this.emailUniqueError = ''
           : this.emailUniqueError = 'email already exists'
-        })
-        .catch(console.error)
+        } catch (e) {
+          console.error(e)
+        }
       },
       clearEmailErrors () {
         this.emailValidError = ''
