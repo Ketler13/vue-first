@@ -1,4 +1,4 @@
-import { _setRate, _removeSplit } from '@/helpers'
+import { _setRate, _removeSplit, months } from '@/helpers'
 
 export default {
   name: 'split',
@@ -31,6 +31,13 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    }
+  },
+  filters: {
+    convertData (data) {
+      const arr = data.split('/')
+      const month = months[arr[0]]
+      return arr[1] + ' ' + month + ' ' + arr[2]
     }
   }
 }

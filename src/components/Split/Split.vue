@@ -1,7 +1,7 @@
 <template>
   <md-whiteframe md-elevation="10" class="split">
     <p>
-      {{split.date}}
+      {{split.date | convertData}}
     </p>
     <md-button
       @click="removeSplit"
