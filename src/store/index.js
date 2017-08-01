@@ -15,7 +15,8 @@ const store = new Vuex.Store({
     excercises: null,
     details: [],
     excercisesInSplit: [],
-    splits: []
+    splits: [],
+    loadingSplits: false
   },
   mutations: {
     setToken (state, result) {
@@ -33,6 +34,7 @@ const store = new Vuex.Store({
     },
     setSplits (state, result) {
       state.splits = result.data
+      state.loadingSplits = false
     },
     logout (state) {
       state.email = ''
@@ -113,6 +115,7 @@ const store = new Vuex.Store({
       return await add(split, state.token)
     },
     async loadSplits ({commit, state}) {
+      state.loadingSplits = true
       commit('setSplits', await _loadSplits(state.token, state.user.id))
     },
     async addExcercise ({dispatch, state}, data) {

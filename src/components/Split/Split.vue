@@ -1,5 +1,5 @@
 <template>
-  <md-whiteframe md-elevation="10" class="split">
+  <md-whiteframe md-elevation="2" class="split">
     <p>
       {{split.date | convertDate}}
     </p>

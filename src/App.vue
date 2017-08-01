@@ -49,7 +49,6 @@ export default {
     justify-content: flex-end;
   }
 
-
   a {
     color: #42b983;
   }
@@ -65,8 +64,9 @@ export default {
   }
 
   .new-split, .splits, .excercises {
-    width: 80%;
+    min-width: 960px;
     margin: 20px auto;
+    padding: 0 20px;
   }
 
   .router-link-active {

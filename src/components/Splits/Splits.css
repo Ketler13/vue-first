@@ -1,9 +1,9 @@
-.splits {
+.split-list {
   display: flex;
   flex-flow: row wrap;
 }
 
-.split {
-  margin: 0 10px;
-  min-width: 200px;
+.split-item {
+  margin: 0 auto;
+  width: 80%;
 }

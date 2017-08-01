@@ -8,6 +8,9 @@ export default {
   computed: {
     splits () {
       return this.$store.state.splits
+    },
+    loadingSplits () {
+      return this.$store.state.loadingSplits
     }
   },
   mounted () {
