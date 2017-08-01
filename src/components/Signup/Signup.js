@@ -9,13 +9,14 @@ export default {
       password: '',
       emailError: '',
       nameError: '',
+      passwordError: '',
       registering: false
     }
   },
   computed: {
     formFullfilled () {
       return this.email && this.password && this.name && !this.emailError &&
-      !this.nameError && !this.registering
+      !this.nameError && !this.registering && !this.passwordError
     }
   },
   methods: {
@@ -31,7 +32,6 @@ export default {
     },
     async checkName (name) {
       if (!name) {
-        this.nameError = ''
         this.nameError = ''
         return
       }
@@ -57,12 +57,10 @@ export default {
     async checkEmail (email) {
       if (!email) {
         this.emailError = ''
-        this.emailError = ''
         return
       }
       if (!pattern.test(email)) {
         this.emailError = 'incorrect email'
-        this.emailError = ''
         return
       } else {
         this.emailError = ''
@@ -79,6 +77,11 @@ export default {
     clearEmailErrors () {
       this.emailError = ''
       this.emailError = ''
+    },
+    checkPassword (password) {
+      this.passwordError = (password.length < 6 && password.length !==0 )
+      ? 'password must be at least 6 symbols'
+      : ''
     }
   }
 }

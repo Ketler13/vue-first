@@ -18,9 +18,12 @@
         <span class="md-error">{{emailError}}</span>
       </md-input-container>
 
-      <md-input-container md-has-password>
+      <md-input-container md-has-password :class="{'md-input-invalid': passwordError}">
         <label>password</label>
-        <md-input v-model="password" type="password"></md-input>
+        <md-input v-model="password" type="password"
+          @change="checkPassword($event)"
+        ></md-input>
+        <span class="md-error">{{passwordError}}</span>
       </md-input-container>
 
       <md-button type="submit" class="md-raised md-primary" :disabled="!formFullfilled">
