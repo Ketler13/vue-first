@@ -28,6 +28,8 @@ export default {
       this.$refs[ref].open()
     },
     closeDialog (ref) {
+      this.newExcerciseTitle = ''
+      this.newExcerciseText = ''
       this.$refs[ref].close()
     },
     addExcercise (excercise) {

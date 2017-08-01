@@ -1,14 +1,21 @@
 export default {
   name: 'new-excercise-form',
-  data () {
-    return {
-      title: '',
-      text: ''
-    }
-  },
+  props: ['title', 'text'],
+  // data () {
+  //   return {
+  //     title: '',
+  //     text: ''
+  //   }
+  // },
   computed: {
     formFullfilled () {
       return !!this.title && !!this.text
+    },
+    computedTitle () {
+      return this.title
+    },
+    computedText () {
+      return this.text
     }
   },
   methods: {
