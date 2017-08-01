@@ -77,6 +77,10 @@ const store = new Vuex.Store({
     refreshStore (state) {
       state.details = []
       state.excercisesInSplit = []
+    },
+    removeSplit (state, id) {
+      state.splits = state.splits
+        .filter(split => split.id !== id)
     }
   },
   actions: {

@@ -3,6 +3,12 @@
     <p>
       {{split.date}}
     </p>
+    <md-button
+      @click="removeSplit"
+      class="md-icon-button md-warn md-dense remove-button"
+    >
+      <md-icon>highlight_off</md-icon>
+    </md-button>
     <ul>
       <li v-for="excercise in split.excercises" :key="excercise.name">
         {{excercise.name}}:
@@ -16,7 +22,7 @@
 
 
 <script>
-  import axios from 'axios'
+  import { _setRate, _removeSplit } from '@/helpers'
 
   export default {
     name: 'split',
@@ -27,23 +33,25 @@
       }
     },
     methods: {
-      setRate (rate) {
-        axios({
-          method: 'patch',
-          url: `http://127.0.0.1:3000/api/splits/${this.split.id}`,
-          headers: {
-            'content-type': 'application/json',
-            token: this.$store.state.token
-          },
-          data: {
-            rate
-          }
-        })
-        .then(res => {
+      async setRate (rate) {
+        try {
+          const res = await _setRate(rate, this.split.id, this.$store.state.token)
           if (res.data.success) {
             this.rate = rate
           }
-        })
+        } catch (e) {
+          console.error(e)
+        }
+      },
+      async removeSplit () {
+        try {
+          const res = await _removeSplit(this.split.id, this.$store.state.token)
+          if (res.data.success) {
+            this.$store.commit('removeSplit', this.split.id)
+          }
+        } catch (e) {
+          console.log(e)
+        }
       }
     }
   }
@@ -52,7 +60,15 @@
 <style scoped>
   .split {
     padding: 5px;
+    position: relative;
   }
+
+  .remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   .set {
     margin: 0 5px;
   }
