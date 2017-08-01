@@ -1,0 +1,12 @@
+.chips {
+  display: flex;
+  align-items: flex-start;
+}
+
+.chip {
+  margin: 0 5px;
+}
+
+.set {
+  margin: 0 3px;
+}

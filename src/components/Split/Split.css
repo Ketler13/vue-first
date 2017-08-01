@@ -1,0 +1,14 @@
+.split {
+  padding: 5px;
+  position: relative;
+}
+
+.remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.set {
+  margin: 0 5px;
+}

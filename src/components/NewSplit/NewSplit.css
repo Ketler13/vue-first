@@ -1,0 +1,7 @@
+.excercise-handler {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: stretch;
+}

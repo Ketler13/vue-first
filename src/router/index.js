@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
-import Signup from '@/components/Signup'
-import NewSplit from '@/components/NewSplit'
-import Splits from '@/components/Splits'
-import Excercises from '@/components/Excercises'
+import Login from '@/components/Login/Login'
+import Signup from '@/components/Signup/Signup.vue'
+import NewSplit from '@/components/NewSplit/NewSplit.vue'
+import Splits from '@/components/Splits/Splits.vue'
+import Excercises from '@/components/Excercises/Excercises.vue'
 
 Vue.use(Router)
 

@@ -63,4 +63,8 @@ export default {
   .fullwidth {
     width: 100%;
   }
+
+  .new-split, .splits, .excercises {
+    margin-top: 20px;
+  }
 </style>

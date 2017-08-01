@@ -1,0 +1,13 @@
+.signup-form__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  width: 40%;
+}
+
+.error {
+  color: red;
+}

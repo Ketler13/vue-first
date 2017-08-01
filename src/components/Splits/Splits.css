@@ -1,0 +1,8 @@
+.splits {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.split {
+  margin: 0 10px;
+}
