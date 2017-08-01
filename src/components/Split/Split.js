@@ -34,8 +34,8 @@ export default {
     }
   },
   filters: {
-    convertData (data) {
-      const arr = data.split('/')
+    convertDate (date) {
+      const arr = date.split('/')
       const month = months[arr[0]]
       return arr[1] + ' ' + month + ' ' + arr[2]
     }

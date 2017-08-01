@@ -47,7 +47,10 @@ export default {
     }
   },
   mounted () {
-    this.$store.state.token && this.$store
-      .dispatch('loadExcercises')
+    if (!this.$store.state.isLogged) {
+      this.$router.push({path: '/login'})
+    } else {
+      this.$store.dispatch('loadExcercises')
+    }
   }
 }
