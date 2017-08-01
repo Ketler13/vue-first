@@ -5,6 +5,8 @@
         <new-excercise-form
           @titleChange="setNewExcerciseTitle($event)"
           @textChange="setNewExcerciseText($event)"
+          :title="newExcerciseTitle"
+          :text="newExcerciseText"
         ></new-excercise-form>
       </md-dialog-content>
 

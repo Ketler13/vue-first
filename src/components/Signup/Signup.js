@@ -7,16 +7,14 @@ export default {
       name: '',
       email: '',
       password: '',
-      emailUniqueError: '',
-      emailValidError: '',
-      nameUniqueError: '',
-      nameValidError: ''
+      emailError: '',
+      nameError: ''
     }
   },
   computed: {
     formFullfilled () {
-      return this.email && this.password && this.name && !this.emailValidError &&
-      !this.emailUniqueError && !this.nameValidError && !this.nameUniqueError
+      return this.email && this.password && this.name && !this.emailError &&
+      !this.nameError
     }
   },
   methods: {
@@ -28,56 +26,54 @@ export default {
     },
     async checkName (name) {
       if (!name) {
-        this.nameValidError = ''
-        this.nameUniqueError = ''
+        this.nameError = ''
+        this.nameError = ''
         return
       }
       const pattern = /[a-zA-Z0-9]/
       if (!pattern.test(name)) {
-        this.nameValidError = 'username must contain letters and numbers only'
-        this.nameUniqueError = ''
+        this.nameError = 'username must contain letters and numbers only'
         return
       } else {
-        this.nameValidError = ''
+        this.nameError = ''
       }
       try {
         const res = await _checkName(name)
         res.data.success
-        ? this.nameUniqueError = ''
-        : this.nameUniqueError = 'name already exists'
+        ? this.nameError = ''
+        : this.nameError = 'name already exists'
       } catch (e) {
         console.error(e)
       }
     },
     clearNameErrors () {
-      this.nameValidError = ''
-      this.nameUniqueError = ''
+      this.nameError = ''
     },
     async checkEmail (email) {
       if (!email) {
-        this.emailValidError = ''
-        this.emailUniqueError = ''
+        this.emailError = ''
+        this.emailError = ''
         return
       }
       if (!pattern.test(email)) {
-        this.emailValidError = 'incorrect email'
-        this.emailUniqueError = ''
+        this.emailError = 'incorrect email'
+        this.emailError = ''
         return
       } else {
-        this.emailValidError = ''
+        this.emailError = ''
       }
       try {
         const res = await _checkEmail(email)
         res.data.success
-        ? this.emailUniqueError = ''
-        : this.emailUniqueError = 'email already exists'
+        ? this.emailError = ''
+        : this.emailError = 'email already exists'
       } catch (e) {
         console.error(e)
       }
     },
     clearEmailErrors () {
-      this.emailValidError = ''
-      this.emailUniqueError = ''
+      this.emailError = ''
+      this.emailError = ''
     }
   }
 }

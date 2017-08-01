@@ -6,7 +6,7 @@
       <router-link tag="md-button" to="/excercises" v-if="isLogged">excercises</router-link>
       <span v-if="isLogged" style="flex: 1"></span>
       <router-link tag="md-button" to="/login" v-if="!isLogged">log in</router-link>
-      <router-link tag="md-button" to="/signup" class="md-accent" v-if="!isLogged">sign up</router-link>
+      <router-link tag="md-button" to="/signup"v-if="!isLogged">sign up</router-link>
       <md-button v-if="isLogged" @click.prevent="logout" class="md-warn">log out</md-button>
     </md-toolbar>
     <router-view></router-view>
@@ -67,5 +67,24 @@ export default {
   .new-split, .splits, .excercises {
     width: 80%;
     margin: 20px auto;
+  }
+
+  .router-link-active {
+    color: pink;
+  }
+
+  .signup-form__wrapper, .login-form__wrapper {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .signup-form, .login-form {
+    width: 40%;
+  }
+
+  .error {
+    color: red;
   }
 </style>

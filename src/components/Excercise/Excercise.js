@@ -5,10 +5,5 @@ export default {
       isOpen: false
     }
   },
-  props: ['excercise'],
-  methods: {
-    toggleBody () {
-      this.isOpen = !this.isOpen
-    }
-  }
+  props: ['excercise']
 }

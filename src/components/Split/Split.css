@@ -1,4 +1,7 @@
 .split {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   padding: 5px;
   position: relative;
 }

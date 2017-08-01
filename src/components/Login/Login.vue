@@ -5,7 +5,7 @@
         <label>email</label>
         <md-input v-model="email" type="email"></md-input>
       </md-input-container>
-      <md-input-container>
+      <md-input-container md-has-password>
         <label>password</label>
         <md-input v-model="password" type="password"></md-input>
       </md-input-container>

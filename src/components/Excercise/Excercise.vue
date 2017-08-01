@@ -1,7 +1,7 @@
 <template>
   <md-whiteframe md-elevation="2">
-    <p @click="toggleBody">{{excercise.title}}</p>
-    <p v-show="isOpen">{{excercise.text}}</p>
+    <p>{{excercise.title}}</p>
+    <md-tooltip md-direction="top">{{excercise.text}}</md-tooltip>
   </md-whiteframe>
 </template>
 

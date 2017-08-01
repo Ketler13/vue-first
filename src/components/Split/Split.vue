@@ -16,7 +16,8 @@
       </li>
     </ul>
     <md-rating-bar :value="rate" :md-max-rating="5" class="md-primary"
-      :md-empty-icon="'star_border'" @change="setRate($event)"></md-rating-bar>
+      :md-empty-icon="'star_border'" @change="setRate($event)">
+    </md-rating-bar>
   </md-whiteframe>
 </template>
 
