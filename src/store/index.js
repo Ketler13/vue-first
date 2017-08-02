@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { login, signup, loadexc, add, _loadSplits, _addExcercise } from '@/actions'
+import { _login, _signup, _loadexc, _add, _loadSplits, _addExcercise } from '@/actions'
 
 Vue.use(Vuex)
 
@@ -95,13 +95,13 @@ const store = new Vuex.Store({
   },
   actions: {
     async logIn ({commit}, payload) {
-      commit('setToken', await login(payload))
+      commit('setToken', await _login(payload))
     },
     async signUp ({commit}, payload) {
-      commit('signUp', await signup(payload))
+      commit('signUp', await _signup(payload))
     },
     async loadExcercises ({commit, state}) {
-      commit('setExcercises', await loadexc(state.token))
+      commit('setExcercises', await _loadexc(state.token))
     },
     async addSplit ({state}) {
       const now = new Date()
@@ -112,7 +112,7 @@ const store = new Vuex.Store({
         date,
         user: state.user.id
       }
-      return await add(split, state.token)
+      return await _add(split, state.token)
     },
     async loadSplits ({commit, state}) {
       state.loadingSplits = true

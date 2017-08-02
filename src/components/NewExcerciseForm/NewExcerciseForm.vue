@@ -1,6 +1,6 @@
 <template>
   <div class="new-excercise-form__wrapper">
-    <form novalidateclass="new-excercise-form">
+    <form novalidate>
       <md-input-container>
         <label>title</label>
         <md-input :value="computedTitle" type="text" @change="throwTitle($event)">

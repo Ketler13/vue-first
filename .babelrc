@@ -11,8 +11,8 @@
   "plugins": ["transform-runtime"],
   "env": {
     "test": {
-      "presets": ["env", "stage-2"],
-      "plugins": ["istanbul"]
+      "presets": ["env", "stage-1"],
+      "plugins": ["istanbul", "transform-decorators-legacy", "transform-class-properties"]
     }
   }
 }

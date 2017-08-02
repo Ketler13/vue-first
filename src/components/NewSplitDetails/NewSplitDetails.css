@@ -16,6 +16,6 @@
 
 .remove-button {
   position: absolute;
-  top: 5px;
-  left: 140px;
+  top: 0;
+  right: 0;
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login/Login'
+import Login from '@/components/Login/Login.vue'
 import Signup from '@/components/Signup/Signup.vue'
 import NewSplit from '@/components/NewSplit/NewSplit.vue'
 import Splits from '@/components/Splits/Splits.vue'

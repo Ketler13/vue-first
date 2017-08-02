@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     async setRate (rate) {
+      if (rate === this.rate) { return }
       try {
         const res = await _setRate(rate, this.split.id, this.$store.state.token)
         if (res.data.success) {

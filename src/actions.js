@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const BASE_URL = 'http://127.0.0.1:3000/api/'
 
-export const login = payload => {
+export const _login = payload => {
   const url = BASE_URL + 'login'
 
   return axios({
@@ -15,7 +15,7 @@ export const login = payload => {
   })
 }
 
-export const signup = payload => {
+export const _signup = payload => {
   const url = BASE_URL + 'register'
 
   return axios({
@@ -28,7 +28,7 @@ export const signup = payload => {
   })
 }
 
-export const loadexc = (token) => {
+export const _loadexc = (token) => {
   const url = BASE_URL + 'excercises'
 
   return axios({
@@ -41,7 +41,7 @@ export const loadexc = (token) => {
   })
 }
 
-export const add = (split, token) => {
+export const _add = (split, token) => {
   const url = BASE_URL + 'addSplit'
 
   return axios({
